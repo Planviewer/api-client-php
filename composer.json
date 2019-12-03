@@ -9,7 +9,9 @@
             "email": "a.simons@planviewer.nl"
         }
     ],
-    "require": {},
+    "require": {
+        "guzzlehttp/guzzle": "^6.4"
+    },
     "autoload": {
         "psr-4": {
             "Planviewer\\": "lib/"
