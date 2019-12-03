@@ -116,5 +116,5 @@ class MapsApi extends Client {
         } else {
             return FALSE;
         }
-    };
+    }
 }
