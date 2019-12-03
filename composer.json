@@ -1,0 +1,18 @@
+{
+    "name": "planviewer/api-client-php",
+    "description": "API Client library to access Planviewer API's",
+    "type": "library",
+    "license": "AGPL-3.0-only",
+    "authors": [
+        {
+            "name": "Axel Simons",
+            "email": "a.simons@planviewer.nl"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Planviewer\\": "lib/"
+        }
+    }
+}
