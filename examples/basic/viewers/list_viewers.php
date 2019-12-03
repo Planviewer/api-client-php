@@ -9,6 +9,18 @@ use Planviewer\MapsApi;
 $mapsapi = new MapsApi([
     'auth' => [$config['api-key'], $config['api-secret']],
     'base_uri' => (isset($config['base_uri']) ? $config['base_uri'] : 'https://www.planviewer.nl'),
+    'verify' => false,
 ]);
 
-var_dump($mapsapi->listViewers());
+$limit = 10;
+$offset = 0;
+$viewers = [];
+do {
+
+    $batch = $mapsapi->listViewers(['query' => ['limit' => $limit, 'offset' => $offset]]);
+    $viewers = array_merge($viewers, $batch);
+    $offset += $limit;
+
+} while(count($batch));
+
+var_dump($viewers);

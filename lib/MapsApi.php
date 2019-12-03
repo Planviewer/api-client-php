@@ -27,24 +27,27 @@ class MapsApi extends Client {
         parent::__construct($config);
     }
 
-    public function listViewers($limit = 10, $offset = 0) {
+    public function listViewers(array $options = []) {
 
-        $viewers = [];
-        do {
-            $response = $this->request('GET', '/maps_api/v2/server/viewers', [
-                'query' => [
-                    'limit' => $limit,
-                    'offset' => $offset,
-                ],
-            ]);
+        if(!isset($options['query'])) {
+            $options['query'] = [
+                'limit' => '10',
+                'offset' => '0',
+            ];
+        }
 
-            $batch = $this->json_decode($response)->viewers;
-            $viewers = array_merge($viewers, $batch);
-            $offset += $limit;
+        if(!isset($options['query']['limit'])) {
+            $options['query']['limit'] = 10;
+        }
 
-        } while(count($batch));
+        if(!isset($options['query']['offset'])) {
+            $options['query']['offset'] = 0;
+        }
 
-        return $viewers;
+        $response = $this->request('GET', '/maps_api/v2/server/viewers', $options);
+
+        $batch = $this->json_decode($response)->viewers;
+        return $batch;
     }
 
     public function json_decode(Response $response, $assoc = false, $depth = 512, $options = 0) {
