@@ -71,9 +71,72 @@ class MapsApi extends Client {
             throw new \Exception('Content is not base64 encoded');
         }
 
-        $response = $this->request('POST', '/maps_api/v2/server//sld/upload', [
+        $response = $this->request('POST', '/maps_api/v2/server/sld/upload', [
             'filename' => $filename,
             'content' => $content,
+        ]);
+        $batch = $this->json_decode($response);
+        return $batch;
+    }
+
+    public function deleteApplicatioSLD()
+    {
+        $response = $this->request('DELETE', '/maps_api/v2/server/sld/delete');
+
+        $batch = $this->json_decode($response);
+        return $batch;
+    }
+
+    public function hasApplicatioSLD()
+    {
+        $response = $this->request('GET', '/maps_api/v2/server/sld');
+
+        $batch = $this->json_decode($response);
+        return $batch;
+    }
+
+    public function getDefaultLegenda()
+    {
+        $response = $this->request('GET', '/maps_api/v2/server/legenda/default');
+
+        $batch = $this->json_decode($response);
+        return $batch;
+    }
+
+    public function getWfsCapabilities($url = false)
+    {
+        if (!$url) {
+            throw new \Exception('No Url given');
+        }
+
+        $response = $this->request('POST', '/maps_api/v2/server/capabilities/wfs', [
+            'url' => $url,
+        ]);
+        $batch = $this->json_decode($response);
+        return $batch;
+    }
+
+    public function getWmsCapabilities($url = false)
+    {
+        if (!$url) {
+            throw new \Exception('No Url given');
+        }
+
+        $response = $this->request('POST', '/maps_api/v2/server/capabilities/wms', [
+            'url' => $url,
+        ]);
+        $batch = $this->json_decode($response);
+        return $batch;
+    }
+
+    public function getWmtsCapabilities($url = false)
+    {
+        if (!$url) {
+            throw new \Exception('No Url given');
+        }
+
+        $response = $this->request('POST', '/maps_api/v2/server/capabilities/wmts', [
+            'url' => $url,
         ]);
         $batch = $this->json_decode($response);
         return $batch;
