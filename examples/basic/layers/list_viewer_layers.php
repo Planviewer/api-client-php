@@ -17,9 +17,10 @@
 $mapsapi = require dirname(__DIR__).'/../bootstrap.php';
 
 /** target viewer for these examples */
-$viewer = require dirname(__DIR__).'/viewer.php';
+$viewer = require dirname(__FILE__).'/viewer.php';
 $identifier = $viewer['identifier'];
 
-$layers = $mapsapi->listViewerLayers($identifier);
+$layers = $mapsapi->listLayers($identifier);
+var_dump($layers);
 
 
