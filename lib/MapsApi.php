@@ -27,7 +27,7 @@ class MapsApi extends Client {
      * @param array  $config
      * @param object $apiHandler
      */
-    public function __construct(apiInterface $apiHandler, array $config = []) {
+    public function __construct(array $config = [], apiInterface $apiHandler = null) {
 
         if (!isset($config['base_uri'])) {
             $config['base_uri'] = 'https://www.planviewer.nl';
