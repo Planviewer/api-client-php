@@ -36,7 +36,6 @@ class MapsApi extends Client {
         parent::__construct($config);
 
         $this->api = $apiHandler;
-
     }
 
     /* APPLICATION */
