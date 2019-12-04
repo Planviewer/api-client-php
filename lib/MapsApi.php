@@ -17,17 +17,19 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use apiInterface;
 
-class MapsApi extends Client {
+class MapsApi extends Client
+{
 
     private $api;
 
     /**
      * MapsApi constructor.
-     * 
-     * @param array  $config
+     *
+     * @param array $config
      * @param object $apiHandler
      */
-    public function __construct(array $config = [], apiInterface $apiHandler = null) {
+    public function __construct(array $config = [], apiInterface $apiHandler = null)
+    {
 
         if (!isset($config['base_uri'])) {
             $config['base_uri'] = 'https://www.planviewer.nl';
@@ -104,8 +106,6 @@ class MapsApi extends Client {
      */
     public function uploadApplicatioSLD(array $options)
     {
-        
-
         $response = $this->request('POST', '/maps_api/v2/server/sld/upload', [
             'json' => $options,
         ]);
@@ -155,8 +155,6 @@ class MapsApi extends Client {
      */
     public function getWfsCapabilities(array $options)
     {
-        
-
         $response = $this->request('POST', '/maps_api/v2/server/capabilities/wfs', [
             'json' => $options,
         ]);
@@ -173,8 +171,6 @@ class MapsApi extends Client {
      */
     public function getWmsCapabilities(array $options)
     {
-        
-
         $response = $this->request('POST', '/maps_api/v2/server/capabilities/wms', [
             'json' => $options,
         ]);
@@ -191,8 +187,6 @@ class MapsApi extends Client {
      */
     public function getWmtsCapabilities(array $options)
     {
-        
-
         $response = $this->request('POST', '/maps_api/v2/server/capabilities/wmts', [
             'json' => $options,
         ]);
@@ -212,7 +206,6 @@ class MapsApi extends Client {
      */
     public function listViewers(array $options)
     {
-
         $response = $this->request('GET', '/maps_api/v2/server/viewers', [
             'query' => $options
         ]);
@@ -230,8 +223,6 @@ class MapsApi extends Client {
      */
     public function createViewer(array $options)
     {
-        
-
         $response = $this->request('POST', '/maps_api/v2/server/viewers', [
             'json' => $options,
         ]);
@@ -241,33 +232,31 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
+     * @param string $identifier
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function getViewer(string $viewerId)
+    public function getViewer(string $identifier)
     {
-        
-
-        $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId);
+        $response = $this->request('GET', '/maps_api/v2/server/viewers/' . $identifier);
 
         $batch = $this->api->json_decode($response);
         return $batch;
     }
 
     /**
-     * @param string $viewerId
+     * @param string $identifier
      * @param array $updateOptions
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function updateViewer(string $viewerId, array $updateOptions)
+    public function updateViewer(string $identifier, array $updateOptions)
     {
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId, [
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier, [
             'json' => $updateOptions,
         ]);
 
@@ -276,53 +265,46 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
+     * @param string $identifier
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function cloneViewer(string $viewerId)
+    public function cloneViewer(string $identifier)
     {
-        
-        
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/clone');
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/clone');
 
         $batch = $this->api->json_decode($response);
         return $batch;
     }
 
     /**
-     * @param string $viewerId
+     * @param string $identifier
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function deleteViewer(string $viewerId)
+    public function deleteViewer(string $identifier)
     {
-        
-
-        $response = $this->request('DELETE', '/maps_api/v2/server/viewers/'.$viewerId.'/delete');
+        $response = $this->request('DELETE', '/maps_api/v2/server/viewers/' . $identifier . '/delete');
 
         $batch = $this->api->json_decode($response);
         return $batch;
     }
 
     /**
-     * @param string $viewerId
+     * @param string $identifier
      * @param array  array $options
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function snapshotViewer(string $viewerId, array $options)
+    public function snapshotViewer(string $identifier, array $options)
     {
-        
-        
-
-        $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/snapshot', [
+        $response = $this->request('GET', '/maps_api/v2/server/viewers/' . $identifier . '/snapshot', [
             'query' => $options,
         ]);
 
@@ -331,34 +313,29 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
+     * @param string $identifier
      *
      * @throws \Exception
      */
-    public function getViewerOutline(string $viewerId)
+    public function getViewerOutline(string $identifier)
     {
-        
-
-        $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/outline');
+        $response = $this->request('GET', '/maps_api/v2/server/viewers/' . $identifier . '/outline');
 
         $batch = $this->api->json_decode($response);
         return $batch;
     }
 
     /**
-     * @param string $viewerId
-     * @param array  $options
+     * @param string $identifier
+     * @param array $options
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function setViewerOutline(string $viewerId, array $options)
+    public function setViewerOutline(string $identifier, array $options)
     {
-        
-        
-
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/outline', [
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/outline', [
             'json' => $options,
         ]);
 
@@ -370,35 +347,30 @@ class MapsApi extends Client {
     /* https://docs.planviewer.nl/mapsapi/server_calls/layers.html# */
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      *
      * @throws \Exception
      */
-    public function listLayers(string $viewerId)
+    public function listLayers(string $identifier)
     {
-        
-
-        $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/layers');
+        $response = $this->request('GET', '/maps_api/v2/server/viewers/' . $identifier . '/layers');
 
         $batch = $this->api->json_decode($response);
         return $batch;
     }
 
     /**
-     * @param string $viewerId
-     * @param array  $options
+     * @param string $identifier
+     * @param array $options
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function sortLayers(string $viewerId, array $options)
+    public function sortLayers(string $identifier, array $options)
     {
-        
-        
-
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/sort_layers', [
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/sort_layers', [
             'json' => $options,
         ]);
 
@@ -407,19 +379,17 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
-     * @param array  $options
+     * @param string $identifier
+     * @param array $options
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function createLayer(string $viewerId, array $options)
+    public function createLayer(string $identifier, array $options)
     {
-        
-        
 
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers', [
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/layers', [
             'json' => $options,
         ]);
 
@@ -428,17 +398,17 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
-     * @param array  $options
+     * @param string $identifier
+     * @param array $options
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function uploadShapefile(string $viewerId, array $options)
+    public function uploadShapefile(string $identifier, array $options)
     {
 
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/upload', [
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/upload', [
             'json' => $options,
         ]);
 
@@ -447,21 +417,17 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      * @param array  array $options
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function replaceShapefile(string $viewerId,integer $layerId, array $options)
+    public function replaceShapefile(string $identifier, integer $layerId, array $options)
     {
-        
-        
-        
-
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/upload/'.$layerId.'/upload', [
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/upload/' . $layerId . '/upload', [
             'json' => $options,
         ]);
 
@@ -470,40 +436,33 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function getLayer(string $viewerId,integer $layerId)
+    public function getLayer(string $identifier, integer $layerId)
     {
-        
-        
-
-        $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId);
+        $response = $this->request('GET', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId);
 
         $batch = $this->api->json_decode($response);
         return $batch;
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      * @param array  array $options
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function updateLayer(string $viewerId,integer $layerId, array $options)
+    public function updateLayer(string $identifier, integer $layerId, array $options)
     {
-        
-        
-        
-
-        $response = $this->request('PATCH', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId, [
+        $response = $this->request('PATCH', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId, [
             'json' => $options,
         ]);
 
@@ -512,40 +471,33 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function deleteLayer(string $viewerId,integer $layerId)
+    public function deleteLayer(string $identifier, integer $layerId)
     {
-        
-        
-
-        $response = $this->request('DELETE', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/delete');
+        $response = $this->request('DELETE', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/delete');
 
         $batch = $this->api->json_decode($response);
         return $batch;
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      * @param array  array $options
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function getFeatureDataVectorLayer(string $viewerId,integer $layerId, array $options)
+    public function getFeatureDataVectorLayer(string $identifier, integer $layerId, array $options)
     {
-        
-        
-        
-
-        $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/features', [
+        $response = $this->request('GET', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/features', [
             'query' => $options,
         ]);
 
@@ -554,20 +506,17 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      * @param array  array $options
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function uploadSldVectorLayer(string $viewerId,integer $layerId, array $options)
+    public function uploadSldVectorLayer(string $identifier, integer $layerId, array $options)
     {
-        
-        
-
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/sld/upload', [
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/sld/upload', [
             'json' => $options,
         ]);
 
@@ -576,78 +525,65 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function deleteSldVectorLayer(string $viewerId,integer $layerId)
+    public function deleteSldVectorLayer(string $identifier, integer $layerId)
     {
-        
-        
-
-        $response = $this->request('DELETE', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/sld/delete');
+        $response = $this->request('DELETE', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/sld/delete');
 
         $batch = $this->api->json_decode($response);
         return $batch;
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function hasSldVectorLayer(string $viewerId,integer $layerId)
+    public function hasSldVectorLayer(string $identifier, integer $layerId)
     {
-        
-        
-
-        $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/sld');
+        $response = $this->request('GET', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/sld');
 
         $batch = $this->api->json_decode($response);
         return $batch;
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function getLegendVectorLayer(string $viewerId,integer $layerId)
+    public function getLegendVectorLayer(string $identifier, integer $layerId)
     {
-        
-        
-
-        $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/legenda');
+        $response = $this->request('GET', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/legenda');
 
         $batch = $this->api->json_decode($response);
         return $batch;
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      * @param array array $options
-     * 
+     *
      * @return mixed
-     * 
+     *
      * @throws \Exception
      */
-    public function setPropertyVectorLayer(string $viewerId,integer $layerId, array $options)
+    public function setPropertyVectorLayer(string $identifier, integer $layerId, array $options)
     {
-        
-        
-        
-
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/set_feature', [
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/set_feature', [
             'json' => $options,
         ]);
 
@@ -656,60 +592,50 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
-     * 
+     * @param string $identifier
+     * @param int $layerId
+     *
      * @return mixed
-     * 
+     *
      * @throws \Exception
      */
-    public function getPropertiesVectorLayer(string $viewerId,integer $layerId)
+    public function getPropertiesVectorLayer(string $identifier, integer $layerId)
     {
-        
-        
-
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/get_properties');
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/get_properties');
 
         $batch = $this->api->json_decode($response);
         return $batch;
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
-     * @param int    $featureId
-     * 
+     * @param string $identifier
+     * @param int $layerId
+     * @param int $featureId
+     *
      * @return mixed
-     * 
+     *
      * @throws \Exception
      */
-    public function deletePropertyVectorLayer(string $viewerId,integer $layerId, $featureId)
+    public function deletePropertyVectorLayer(string $identifier, integer $layerId, $featureId)
     {
-        
-        
-
-        $response = $this->request('DELETE', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/delete_properties/'.$featureId);
+        $response = $this->request('DELETE', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/delete_properties/' . $featureId);
 
         $batch = $this->api->json_decode($response);
         return $batch;
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      * @param array  array $options
-     * 
+     *
      * @return mixed
-     * 
+     *
      * @throws \Exception
      */
-    public function updatePropertyVectorLayer(string $viewerId,integer $layerId)
+    public function updatePropertyVectorLayer(string $identifier, integer $layerId)
     {
-        
-        
-        
-
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/update_feature');
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/update_feature');
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -720,19 +646,17 @@ class MapsApi extends Client {
     /* https://docs.planviewer.nl/mapsapi/server_calls/mappings.html# */
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function listFieldMapping(string $viewerId,integer $layerId)
+    public function listFieldMapping(string $identifier, integer $layerId)
     {
-        
-        
 
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/mappings');
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/mappings');
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -740,21 +664,17 @@ class MapsApi extends Client {
 
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      * @param array  array $options
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function sortFieldMapping(string $viewerId,integer $layerId, array $options)
+    public function sortFieldMapping(string $identifier, integer $layerId, array $options)
     {
-        
-        
-        
-
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/sort_mappings', [
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/sort_mappings', [
             'json' => $options,
         ]);
 
@@ -763,21 +683,17 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
+     * @param string $identifier
+     * @param int $layerId
      * @param array  array $options
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function createFieldMapping(string $viewerId,integer $layerId, array $options)
+    public function createFieldMapping(string $identifier, integer $layerId, array $options)
     {
-        
-        
-        
-
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/mappings', [
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/mappings', [
             'json' => $options,
         ]);
 
@@ -786,39 +702,35 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
-     * @param int    $mappingId
+     * @param string $identifier
+     * @param int $layerId
+     * @param int $mappingId
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function getFieldMapping(string $viewerId,integer $layerId, $mappingId)
+    public function getFieldMapping(string $identifier, integer $layerId, $mappingId)
     {
-        
-        
-        
-
-        $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/mappings/'.$mappingId);
+        $response = $this->request('GET', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/mappings/' . $mappingId);
 
         $batch = $this->api->json_decode($response);
         return $batch;
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
-     * @param int    $mappingId
+     * @param string $identifier
+     * @param int $layerId
+     * @param int $mappingId
      * @param array  array $options
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function updateFieldMapping(string $viewerId,integer $layerId, $mappingId, array $options)
+    public function updateFieldMapping(string $identifier, integer $layerId, $mappingId, array $options)
     {
-        $response = $this->request('PATCH', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/mappings/'.$mappingId, [
+        $response = $this->request('PATCH', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/mappings/' . $mappingId, [
             'json' => $options,
         ]);
 
@@ -827,17 +739,17 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
-     * @param int    $layerId
-     * @param int    $mappingId
+     * @param string $identifier
+     * @param int $layerId
+     * @param int $mappingId
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function deleteFieldMapping(string $viewerId,integer $layerId, $mappingId)
+    public function deleteFieldMapping(string $identifier, integer $layerId, $mappingId)
     {
-        $response = $this->request('DELETE', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/mappings/'.$mappingId.'/delete');
+        $response = $this->request('DELETE', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/mappings/' . $mappingId . '/delete');
 
         $batch = $this->api->json_decode($response);
         return $batch;
