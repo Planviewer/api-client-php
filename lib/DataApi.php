@@ -25,7 +25,7 @@ class DataApi extends Client
     /**
      * MapsApi constructor.
      *
-     * @param array $config
+     * @param array  $config
      * @param object $apiHandler
      */
     public function __construct(array $config = [], apiInterface $apiHandler = null)
@@ -46,4 +46,71 @@ class DataApi extends Client
 
     /* GEOCODING */
     /* https://docs.planviewer.nl/mapsapi/data_api.html#get-geometry-of-an-address */
+
+
+    /**
+     * @param array $options
+     *
+     * @return mixed
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getgeometrybyaddress(array $options)
+    {
+        $response = $this->request('POST', '/maps_api/v2/server/data/getgeometrybyaddress', [
+            'json' => $options,
+        ]);
+
+        $batch = $this->api->json_decode($response);
+        return $batch;
+    }
+
+    /**
+     * @param array $options
+     *
+     * @return mixed
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getgeometrybyperceel(array $options)
+    {
+        $response = $this->request('POST', '/maps_api/v2/server/data/getgeometrybyperceel', [
+            'json' => $options,
+        ]);
+
+        $batch = $this->api->json_decode($response);
+        return $batch;
+    }
+
+    /* Data Collection */
+    /* https://docs.planviewer.nl/mapsapi/data_api.html#data-collection-calls */
+
+    public function getdataList(array $options)
+    {
+        $response = $this->request('POST', '/maps_api/v2/server/data/list');
+
+        $batch = $this->api->json_decode($response);
+        return $batch;
+    }
+
+    /**
+     * @param string $endpoint
+     * @param array $options
+     *
+     * @return mixed
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function fetch(string $endpoint, array $options)
+    {
+        $response = $this->request('POST', '/maps_api/v2/server/data/fetch/'.$endpoint, [
+            'json' => $options,
+        ]);
+
+        $batch = $this->api->json_decode($response);
+        return $batch;
+    }
+
+
+
 }

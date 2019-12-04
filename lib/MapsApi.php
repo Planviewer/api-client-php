@@ -102,7 +102,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function uploadApplicatioSLD(array $options)
     {
@@ -151,7 +151,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getWfsCapabilities(array $options)
     {
@@ -167,7 +167,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getWmsCapabilities(string $url)
     {
@@ -185,7 +185,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getWmtsCapabilities(array $options)
     {
@@ -205,7 +205,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function listViewers(int $offset, int $limit)
     {
@@ -226,7 +226,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function createViewer(array $data, array $options = [])
     {
@@ -250,7 +250,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getViewer(string $identifier)
     {
@@ -266,7 +266,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function updateViewer(string $identifier, array $updateOptions)
     {
@@ -283,7 +283,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function cloneViewer(string $identifier)
     {
@@ -298,7 +298,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function deleteViewer(string $identifier)
     {
@@ -314,7 +314,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function snapshotViewer(string $identifier, array $options)
     {
@@ -329,7 +329,7 @@ class MapsApi extends Client
     /**
      * @param string $identifier
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getViewerOutline(string $identifier)
     {
@@ -345,7 +345,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function setViewerOutline(string $identifier, array $options)
     {
@@ -364,7 +364,7 @@ class MapsApi extends Client
      * @param string $identifier
      * @param int $layerId
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function listLayers(string $identifier)
     {
@@ -380,7 +380,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function sortLayers(string $identifier, array $options)
     {
@@ -399,7 +399,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function createLayer(string $identifier, array $data, array $options = [])
     {
@@ -424,7 +424,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function uploadShapefile(string $identifier, array $data)
     {
@@ -444,7 +444,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function replaceShapefile(string $identifier, int $layer, array $data, array $options = [])
     {
@@ -462,7 +462,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getLayer(string $identifier, integer $layerId)
     {
@@ -479,7 +479,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function updateLayer(string $identifier, integer $layerId, array $options)
     {
@@ -497,7 +497,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function deleteLayer(string $identifier, integer $layerId)
     {
@@ -514,7 +514,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getFeatureDataVectorLayer(string $identifier, integer $layerId, array $options)
     {
@@ -533,7 +533,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function uploadSldVectorLayer(string $identifier, integer $layerId, array $options)
     {
@@ -551,7 +551,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function deleteSldVectorLayer(string $identifier, integer $layerId)
     {
@@ -567,7 +567,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function hasSldVectorLayer(string $identifier, integer $layerId)
     {
@@ -583,7 +583,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getLegendVectorLayer(string $identifier, integer $layerId)
     {
@@ -600,7 +600,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function setPropertyVectorLayer(string $identifier, integer $layerId, array $options)
     {
@@ -618,7 +618,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getPropertiesVectorLayer(string $identifier, integer $layerId)
     {
@@ -635,7 +635,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function deletePropertyVectorLayer(string $identifier, integer $layerId, $featureId)
     {
@@ -652,7 +652,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function updatePropertyVectorLayer(string $identifier, integer $layerId)
     {
@@ -672,7 +672,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function listFieldMapping(string $identifier, integer $layerId)
     {
@@ -693,7 +693,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function sortFieldMapping(string $identifier, integer $layerId, array $options)
     {
@@ -712,7 +712,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function createFieldMapping(string $identifier, integer $layerId, array $options)
     {
@@ -731,7 +731,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getFieldMapping(string $identifier, integer $layerId, $mappingId)
     {
@@ -749,7 +749,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function updateFieldMapping(string $identifier, integer $layerId, $mappingId, array $options)
     {
@@ -768,7 +768,7 @@ class MapsApi extends Client
      *
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function deleteFieldMapping(string $identifier, integer $layerId, $mappingId)
     {
