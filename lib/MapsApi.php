@@ -15,6 +15,7 @@ namespace Planviewer;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
+use apiInterface;
 
 class MapsApi extends Client {
 
@@ -23,29 +24,19 @@ class MapsApi extends Client {
     /**
      * MapsApi constructor.
      * 
-     * @param array $config
-     * @param array $validate
+     * @param array  $config
+     * @param object $apiHandler
      */
-    public function __construct(array $config = [], $validate = []) {
+    public function __construct(apiInterface $apiHandler, array $config = []) {
 
         if (!isset($config['base_uri'])) {
             $config['base_uri'] = 'https://www.planviewer.nl';
         }
 
-        if (!isset($validate['class'])) {
-            $validate['class'] = 'apiHandler';
-        }
-
         parent::__construct($config);
 
+        $this->api = $apiHandler;
 
-        $this->api = new $validate['class']();
-
-        if (!$this->api instanceof $validate['class']) {
-            throw new \Exception('Not an instance of '. $validate['class']);
-        }
-        
-        
     }
 
     /* APPLICATION */

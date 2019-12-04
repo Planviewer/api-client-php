@@ -16,7 +16,7 @@ namespace Planviewer;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
-class apiHandler
+class apiHandler implements apiInterface
 {
     /**
      * @param Response $response
@@ -27,7 +27,7 @@ class apiHandler
      *
      * @return mixed
      */
-    protected function json_decode(Response $response, $assoc = false, $depth = 512, $options = 0)
+    public function json_decode(Response $response, $assoc = false, $depth = 512, $options = 0)
     {
 
         $data = \json_decode((string) $response->getBody(), $assoc, $depth, $options);
@@ -46,7 +46,7 @@ class apiHandler
      *
      * @throws \Exception
      */
-    protected function isViewerId($viewerId)
+    public function isViewerId($viewerId)
     {
         if (!$viewerId) {
             throw new \Exception('No viewer ID has been given');
@@ -58,7 +58,7 @@ class apiHandler
      *
      * @throws \Exception
      */
-    protected function isLayerId($layerId)
+    public function isLayerId($layerId)
     {
         if (!$layerId) {
             throw new \Exception('No layer ID has been given');
@@ -73,7 +73,7 @@ class apiHandler
      *
      * @throws \Exception
      */
-    protected function isArray($array) {
+    public function isArray($array) {
         if (!is_array($array)) {
             throw new \Exception('Options must be an array');
         }
