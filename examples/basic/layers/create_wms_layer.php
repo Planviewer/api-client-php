@@ -18,11 +18,9 @@ $mapsapi = require dirname(__DIR__).'/../bootstrap.php';
 
 /** available layer-types */
 $types = $mapsapi->listLayerTypes();
-var_dump($types);
 
 /** fetch available layers from WMS service */
 $layers = $mapsapi->getWmsCapabilities('https://geodata.nationaalgeoregister.nl/ahn1/wms');
-var_dump($layers);
 
 /** mandatory for WMS layer */
 $data = [

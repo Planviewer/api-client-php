@@ -18,12 +18,18 @@ $mapsapi = require dirname(__DIR__).'/../bootstrap.php';
 
 /** available layer-types */
 $types = $mapsapi->listLayerTypes();
-var_dump($types);
 
+/** allowed vector types */
 $vectorSourceTypes = $mapsapi->ListVectorSourceTypes();
-var_dump($vectorSourceTypes);
 
-/** mandatory for vector layer */
+
+/** target viewer for these examples */
+$viewer = require dirname(__FILE__).'/viewer.php';
+$identifier = $viewer['identifier'];
+
+/** 
+ * upload shapefile to create a new layer 
+ */
 $data = [
     'layer_name' => 'my-first-vector-layer',
 
@@ -36,16 +42,13 @@ $data = [
     ],
 ];
 
-/** target viewer for these examples */
-$viewer = require dirname(__FILE__).'/viewer.php';
-$identifier = $viewer['identifier'];
-
-/** upload shapefile to create a new layer */
 $layer = $mapsapi->uploadShapefile($identifier, $data);
 var_dump($layer);
 
 
-
+/** 
+ * or upload a new shape to an existing vector-layer
+ */
 $data = [
     'name' => 'my-second-vector-layer',
     'type' => 'vector',
@@ -54,7 +57,6 @@ $data = [
 
 $options = [];
 
-/** or upload a new shape to an existing vector-layer */
 $layer = $mapsapi->createLayer($identifier, $data, $options)->layer;
 
 $data = [

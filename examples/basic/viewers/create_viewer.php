@@ -14,21 +14,15 @@
  * @see https://docs.planviewer.nl/mapsapi/server_calls/viewers.html#list-viewers
  */
 
-$loader = require dirname(__DIR__).'/../bootstrap.php';
-$config = require dirname(__DIR__).'/../config.php';
-
-use Planviewer\MapsApi;
-
-$mapsapi = new MapsApi([
-    'auth' => [$config['api-key'], $config['api-secret']],
-    'base_uri' => (isset($config['base_uri']) ? $config['base_uri'] : 'https://www.planviewer.nl'),
-    'verify' => false,
-]);
+$mapsapi = require dirname(__DIR__).'/../bootstrap.php';
 
 
+/** mandatory */
 $data = [
     'name' => 'my-new-viewer',
 ];
+
+/** optional */
 $options = [
     'default_show_print' => true,
     'default_show_reset' => true,
@@ -38,5 +32,5 @@ $options = [
 
 $viewer = $mapsapi->createViewer($data, $options)->viewer;
 
+$viewer = $mapsapi->getViewer($viewer->identifier);
 var_dump($viewer);
-
