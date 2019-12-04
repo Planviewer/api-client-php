@@ -30,10 +30,10 @@ $offset = 0;
 $viewers = [];
 do {
 
-    $batch = $mapsapi->listViewers([$limit, $offset]);
-    $viewers = array_merge($viewers, $batch);
+    $batch = $mapsapi->listViewers( ['limit'=>$limit, 'offset'=>$offset]);
+    $viewers = array_merge($viewers, $batch->viewers);
     $offset += $limit;
 
-} while(count($batch));
+} while(count($batch->viewers));
 
 var_dump($viewers);
