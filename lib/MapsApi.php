@@ -458,7 +458,7 @@ class MapsApi extends Client {
     public function replaceShapefile(string $viewerId,integer $layerId, array $options)
     {
         
-        $this->api->isLayerId($layerId);
+        
         
 
         $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/upload/'.$layerId.'/upload', [
@@ -480,7 +480,7 @@ class MapsApi extends Client {
     public function getLayer(string $viewerId,integer $layerId)
     {
         
-        $this->api->isLayerId($layerId);
+        
 
         $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId);
 
@@ -500,7 +500,7 @@ class MapsApi extends Client {
     public function updateLayer(string $viewerId,integer $layerId, array $options)
     {
         
-        $this->api->isLayerId($layerId);
+        
         
 
         $response = $this->request('PATCH', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId, [
@@ -522,7 +522,7 @@ class MapsApi extends Client {
     public function deleteLayer(string $viewerId,integer $layerId)
     {
         
-        $this->api->isLayerId($layerId);
+        
 
         $response = $this->request('DELETE', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/delete');
 
@@ -542,7 +542,7 @@ class MapsApi extends Client {
     public function getFeatureDataVectorLayer(string $viewerId,integer $layerId, array $options)
     {
         
-        $this->api->isLayerId($layerId);
+        
         
 
         $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/features', [
@@ -564,7 +564,7 @@ class MapsApi extends Client {
      */
     public function uploadSldVectorLayer(string $viewerId,integer $layerId, array $options)
     {
-        $this->api->isLayerId($layerId);
+        
         
 
         $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/sld/upload', [
@@ -586,7 +586,7 @@ class MapsApi extends Client {
     public function deleteSldVectorLayer(string $viewerId,integer $layerId)
     {
         
-        $this->api->isLayerId($layerId);
+        
 
         $response = $this->request('DELETE', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/sld/delete');
 
@@ -605,7 +605,7 @@ class MapsApi extends Client {
     public function hasSldVectorLayer(string $viewerId,integer $layerId)
     {
         
-        $this->api->isLayerId($layerId);
+        
 
         $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/sld');
 
@@ -624,7 +624,7 @@ class MapsApi extends Client {
     public function getLegendVectorLayer(string $viewerId,integer $layerId)
     {
         
-        $this->api->isLayerId($layerId);
+        
 
         $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/legenda');
 
@@ -644,7 +644,7 @@ class MapsApi extends Client {
     public function setPropertyVectorLayer(string $viewerId,integer $layerId, array $options)
     {
         
-        $this->api->isLayerId($layerId);
+        
         
 
         $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/set_feature', [
@@ -666,7 +666,7 @@ class MapsApi extends Client {
     public function getPropertiesVectorLayer(string $viewerId,integer $layerId)
     {
         
-        $this->api->isLayerId($layerId);
+        
 
         $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/get_properties');
 
@@ -686,7 +686,7 @@ class MapsApi extends Client {
     public function deletePropertyVectorLayer(string $viewerId,integer $layerId, $featureId)
     {
         
-        $this->api->isLayerId($layerId);
+        
 
         $response = $this->request('DELETE', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/delete_properties/'.$featureId);
 
@@ -706,7 +706,7 @@ class MapsApi extends Client {
     public function updatePropertyVectorLayer(string $viewerId,integer $layerId)
     {
         
-        $this->api->isLayerId($layerId);
+        
         
 
         $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/update_feature');
@@ -730,7 +730,7 @@ class MapsApi extends Client {
     public function listFieldMapping(string $viewerId,integer $layerId)
     {
         
-        $this->api->isLayerId($layerId);
+        
 
         $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/mappings');
 
@@ -751,7 +751,7 @@ class MapsApi extends Client {
     public function sortFieldMapping(string $viewerId,integer $layerId, array $options)
     {
         
-        $this->api->isLayerId($layerId);
+        
         
 
         $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/sort_mappings', [
@@ -774,7 +774,7 @@ class MapsApi extends Client {
     public function createFieldMapping(string $viewerId,integer $layerId, array $options)
     {
         
-        $this->api->isLayerId($layerId);
+        
         
 
         $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/mappings', [
@@ -797,7 +797,7 @@ class MapsApi extends Client {
     public function getFieldMapping(string $viewerId,integer $layerId, $mappingId)
     {
         
-        $this->api->isLayerId($layerId);
+        
         
 
         $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/mappings/'.$mappingId);
@@ -818,10 +818,6 @@ class MapsApi extends Client {
      */
     public function updateFieldMapping(string $viewerId,integer $layerId, $mappingId, array $options)
     {
-        
-        $this->api->isLayerId($layerId);
-        
-
         $response = $this->request('PATCH', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/mappings/'.$mappingId, [
             'json' => $options,
         ]);
@@ -841,13 +837,44 @@ class MapsApi extends Client {
      */
     public function deleteFieldMapping(string $viewerId,integer $layerId, $mappingId)
     {
-        
-        $this->api->isLayerId($layerId);
-        
-
         $response = $this->request('DELETE', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/mappings/'.$mappingId.'/delete');
 
         $batch = $this->api->json_decode($response);
         return $batch;
     }
+
+
+    /* GEOMETRY */
+    /* https://docs.planviewer-staging.nl/mapsapi/geometry.html# */
+
+    public function getArea(array $options)
+    {
+        $response = $this->request('POST', '/maps_api/v2/server/gis/area', [
+            'json' => $options,
+        ]);
+
+        $batch = $this->api->json_decode($response);
+        return $batch;
+    }
+
+    public function doBuffer(array $options)
+    {
+        $response = $this->request('POST', '/maps_api/v2/server/gis/buffer', [
+            'json' => $options,
+        ]);
+
+        $batch = $this->api->json_decode($response);
+        return $batch;
+    }
+
+    public function doIntersection(array $options)
+    {
+        $response = $this->request('POST', '/maps_api/v2/server/gis/intersection', [
+            'json' => $options,
+        ]);
+
+        $batch = $this->api->json_decode($response);
+        return $batch;
+    }
+
 }
