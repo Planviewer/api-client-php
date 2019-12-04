@@ -106,7 +106,9 @@ class MapsApi extends Client {
     {
         
 
-        $response = $this->request('POST', '/maps_api/v2/server/sld/upload', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/sld/upload', [
+            'json' => $options,
+        ]);
         $batch = $this->api->json_decode($response);
         return $batch;
     }
@@ -155,7 +157,9 @@ class MapsApi extends Client {
     {
         
 
-        $response = $this->request('POST', '/maps_api/v2/server/capabilities/wfs', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/capabilities/wfs', [
+            'json' => $options,
+        ]);
         $batch = $this->api->json_decode($response);
         return $batch;
     }
@@ -171,7 +175,9 @@ class MapsApi extends Client {
     {
         
 
-        $response = $this->request('POST', '/maps_api/v2/server/capabilities/wms', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/capabilities/wms', [
+            'json' => $options,
+        ]);
         $batch = $this->api->json_decode($response);
         return $batch;
     }
@@ -187,7 +193,9 @@ class MapsApi extends Client {
     {
         
 
-        $response = $this->request('POST', '/maps_api/v2/server/capabilities/wmts', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/capabilities/wmts', [
+            'json' => $options,
+        ]);
         $batch = $this->api->json_decode($response);
         return $batch;
     }
@@ -205,7 +213,9 @@ class MapsApi extends Client {
     public function listViewers(array $options)
     {
 
-        $response = $this->request('GET', '/maps_api/v2/server/viewers', $options);
+        $response = $this->request('GET', '/maps_api/v2/server/viewers', [
+            'query' => $options
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -222,7 +232,9 @@ class MapsApi extends Client {
     {
         
 
-        $response = $this->request('POST', '/maps_api/v2/server/viewers', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/viewers', [
+            'json' => $options,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -255,7 +267,9 @@ class MapsApi extends Client {
      */
     public function updateViewer(string $viewerId, array $updateOptions)
     {
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId, $updateOptions);
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId, [
+            'json' => $updateOptions,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -308,7 +322,9 @@ class MapsApi extends Client {
         
         
 
-        $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/snapshot', $options);
+        $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/snapshot', [
+            'query' => $options,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -342,7 +358,9 @@ class MapsApi extends Client {
         
         
 
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/outline', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/outline', [
+            'json' => $options,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -380,7 +398,9 @@ class MapsApi extends Client {
         
         
 
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/sort_layers', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/sort_layers', [
+            'json' => $options,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -399,7 +419,9 @@ class MapsApi extends Client {
         
         
 
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers', [
+            'json' => $options,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -415,10 +437,10 @@ class MapsApi extends Client {
      */
     public function uploadShapefile(string $viewerId, array $options)
     {
-        
-        
 
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/upload', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/upload', [
+            'json' => $options,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -439,7 +461,9 @@ class MapsApi extends Client {
         $this->api->isLayerId($layerId);
         
 
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/upload/'.$layerId.'/upload', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/upload/'.$layerId.'/upload', [
+            'json' => $options,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -479,7 +503,9 @@ class MapsApi extends Client {
         $this->api->isLayerId($layerId);
         
 
-        $response = $this->request('PATCH', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId, $options);
+        $response = $this->request('PATCH', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId, [
+            'json' => $options,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -519,7 +545,9 @@ class MapsApi extends Client {
         $this->api->isLayerId($layerId);
         
 
-        $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/features', $options);
+        $response = $this->request('GET', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/features', [
+            'query' => $options,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -536,11 +564,12 @@ class MapsApi extends Client {
      */
     public function uploadSldVectorLayer(string $viewerId,integer $layerId, array $options)
     {
-        
         $this->api->isLayerId($layerId);
         
 
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/sld/upload', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/sld/upload', [
+            'json' => $options,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -618,7 +647,9 @@ class MapsApi extends Client {
         $this->api->isLayerId($layerId);
         
 
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/set_feature', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/set_feature', [
+            'json' => $options,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -672,7 +703,7 @@ class MapsApi extends Client {
      * 
      * @throws \Exception
      */
-    public function updatePropertyVectorLayer(string $viewerId,integer $layerId, array $options)
+    public function updatePropertyVectorLayer(string $viewerId,integer $layerId)
     {
         
         $this->api->isLayerId($layerId);
@@ -723,7 +754,9 @@ class MapsApi extends Client {
         $this->api->isLayerId($layerId);
         
 
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/sort_mappings', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/sort_mappings', [
+            'json' => $options,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -744,7 +777,9 @@ class MapsApi extends Client {
         $this->api->isLayerId($layerId);
         
 
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/mappings', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/mappings', [
+            'json' => $options,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -787,7 +822,9 @@ class MapsApi extends Client {
         $this->api->isLayerId($layerId);
         
 
-        $response = $this->request('PATCH', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/mappings/'.$mappingId, $options);
+        $response = $this->request('PATCH', '/maps_api/v2/server/viewers/'.$viewerId.'/layers/'.$layerId.'/mappings/'.$mappingId, [
+            'json' => $options,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;

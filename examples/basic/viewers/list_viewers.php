@@ -17,11 +17,9 @@ $offset = 0;
 $viewers = [];
 do {
 
-    $batch = $mapsapi->listViewers(['query' => ['limit'=>$limit, 'offset'=>$offset]]);
+    $batch = $mapsapi->listViewers( ['limit'=>$limit, 'offset'=>$offset]);
     $viewers = array_merge($viewers, $batch->viewers);
     $offset += $limit;
-
-    var_dump($batch->viewers);
 
 } while(count($batch->viewers));
 
