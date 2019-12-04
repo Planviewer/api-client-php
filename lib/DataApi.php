@@ -111,6 +111,76 @@ class DataApi extends Client
         return $batch;
     }
 
+    /* SPECIALIZED CALLS */
+    /* https://docs.planviewer.nl/mapsapi/data_api.html#specialized-calls */
+
+    /**
+     * @param array $options
+     *
+     * @return mixed
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getBuildingElevation(array $options)
+    {
+        $response = $this->request('POST', '/maps_api/v2/server/data/pointcloud/building/elevation', [
+            'json' => $options,
+        ]);
+
+        $batch = $this->api->json_decode($response);
+        return $batch;
+    }
+
+    /**
+     * @param array $options
+     *
+     * @return mixed
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getBuildingVolume(array $options)
+    {
+        $response = $this->request('POST', '/maps_api/v2/server/data/pointcloud/building/volume', [
+            'json' => $options,
+        ]);
+
+        $batch = $this->api->json_decode($response);
+        return $batch;
+    }
+
+    /**
+     * @param array $options
+     *
+     * @return mixed
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getBuildingSurface(array $options)
+    {
+        $response = $this->request('POST', '/maps_api/v2/server/data/pointcloud/building/surface', [
+            'json' => $options,
+        ]);
+
+        $batch = $this->api->json_decode($response);
+        return $batch;
+    }
+
+    /**
+     * @param array $options
+     *
+     * @return mixed
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getBuildingHighestpoint(array $options)
+    {
+        $response = $this->request('POST', '/maps_api/v2/server/data/pointcloud/building/highestpoint', [
+            'json' => $options,
+        ]);
+
+        $batch = $this->api->json_decode($response);
+        return $batch;
+    }
 
 
 }
