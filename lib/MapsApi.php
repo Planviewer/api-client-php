@@ -430,19 +430,18 @@ class MapsApi extends Client {
     }
 
     /**
-     * @param string $viewerId
+     * @param string $identifier
      * @param int    $layerId
      *
      * @return mixed
      *
      * @throws \Exception
      */
-    public function uploadShapefile($viewerId = false, $options)
+    public function uploadShapefile(string $identifier, array $data)
     {
-        $this->api->isViewerId($viewerId);
-        $this->api->isArray($options);
-
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/upload', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$identifier.'/upload', [
+            'json' => $data,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
@@ -457,13 +456,15 @@ class MapsApi extends Client {
      *
      * @throws \Exception
      */
-    public function replaceShapefile($viewerId = false, $layerId, $options)
+    public function replaceShapefile(string $identifier, int $layer, array $data, array $options = [])
     {
-        $this->api->isViewerId($viewerId);
-        $this->api->isLayerId($layerId);
-        $this->api->isArray($options);
+        // $this->api->isViewerId($viewerId);
+        // $this->api->isLayerId($layerId);
+        // $this->api->isArray($options);
 
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$viewerId.'/upload/'.$layerId.'/upload', $options);
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$identifier.'/layers/'.$layer.'/upload', [
+            'json' => $data,
+        ]);
 
         $batch = $this->api->json_decode($response);
         return $batch;
