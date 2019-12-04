@@ -16,7 +16,6 @@
 
 $mapsapi = require dirname(__DIR__).'/../bootstrap.php';
 
-
 /** mandatory */
 $data = [
     'name' => 'my-new-viewer',
@@ -32,5 +31,4 @@ $options = [
 
 $viewer = $mapsapi->createViewer($data, $options)->viewer;
 
-$viewer = $mapsapi->getViewer($viewer->identifier);
 var_dump($viewer);

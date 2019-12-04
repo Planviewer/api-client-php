@@ -181,5 +181,4 @@ class DataApi extends Client
         $batch = $this->api->json_decode($response);
         return $batch;
     }
-    
 }
