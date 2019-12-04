@@ -16,16 +16,21 @@
 
 $mapsapi = require dirname(__DIR__).'/../bootstrap.php';
 
-/** paged list */
-$limit = 10;
-$offset = 0;
-$viewers = [];
-do {
 
-    $batch = $mapsapi->listViewers($offset, $limit);
-    $viewers = array_merge($viewers, $batch->viewers);
-    $offset += $limit;
+/** mandatory */
+$data = [
+    'name' => 'my-new-viewer',
+];
 
-} while(count($batch->viewers));
+/** optional */
+$options = [
+    'default_show_print' => true,
+    'default_show_reset' => true,
+    'default_show_measure' => true,
+    'default_show_snap' => true,
+];
 
-var_dump($viewers);
+$viewer = $mapsapi->createViewer($data, $options)->viewer;
+
+$viewer = $mapsapi->getViewer($viewer->identifier);
+var_dump($viewer);

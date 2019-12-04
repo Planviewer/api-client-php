@@ -79,4 +79,15 @@ class apiHandler implements apiInterface
         }
     }
 
+    public function validate(array $data, array $keys) {
+
+        /** missing keys */
+        $missing = array_diff($keys, array_keys($data));
+
+        if(count($missing)) {
+            return sprintf('missing data [%s]', implode(', ', $missing));
+        }
+
+        return null;
+    }
 }
