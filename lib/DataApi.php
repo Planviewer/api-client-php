@@ -86,7 +86,7 @@ class DataApi extends Client
     /* Data Collection */
     /* https://docs.planviewer.nl/mapsapi/data_api.html#data-collection-calls */
 
-    public function getdataList(array $options)
+    public function getdataList()
     {
         $response = $this->request('POST', '/maps_api/v2/server/data/list');
 
