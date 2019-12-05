@@ -11,9 +11,8 @@ declare(strict_types=1);
  * @see https://github.com/Planviewer/api-client-php
  */
 
-namespace Planviewer;
+namespace Classes;
 
-use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 
 interface apiInterface
