@@ -2,3 +2,4 @@ composer.phar
 /vendor/
 .idea
 examples/config.php
+config/config.php

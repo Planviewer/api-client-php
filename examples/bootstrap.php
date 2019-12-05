@@ -15,15 +15,3 @@ foreach ($paths as $path) {
         break;
     }
 }
-
-use Planviewer\MapsApi;
-
-$config = require __DIR__ . '/config.php';
-
-$mapsapi = new MapsApi([
-    'auth' => [$config['api-key'], $config['api-secret']],
-    'base_uri' => (isset($config['base_uri']) ? $config['base_uri'] : 'https://www.planviewer.nl'),
-    'verify' => false,
-]);
-
-return $mapsapi;

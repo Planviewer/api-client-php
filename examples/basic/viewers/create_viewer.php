@@ -14,7 +14,13 @@
  * @see https://docs.planviewer.nl/mapsapi/server_calls/viewers.html#list-viewers
  */
 
-$mapsapi = require dirname(__DIR__).'/../bootstrap.php';
+require dirname(__DIR__).'/../bootstrap.php';
+
+use Planviewer\Planviewer;
+
+$planviewer = new Planviewer();
+
+
 
 /** mandatory */
 $data = [
@@ -29,6 +35,6 @@ $options = [
     'default_show_snap' => true,
 ];
 
-$viewer = $mapsapi->createViewer($data, $options)->viewer;
+$viewer = $planviewer->mapsApi->createViewer($data, $options)->viewer;
 
 var_dump($viewer);

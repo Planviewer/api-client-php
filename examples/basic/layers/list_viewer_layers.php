@@ -14,13 +14,29 @@
  * @see https://docs.planviewer.nl/mapsapi/server_calls/layers.html#list-the-layers-in-a-viewer
  */
 
-$mapsapi = require dirname(__DIR__).'/../bootstrap.php';
+require dirname(__DIR__).'/../bootstrap.php';
 
-/** target viewer for these examples */
-$viewer = require dirname(__FILE__).'/viewer.php';
-$identifier = $viewer['identifier'];
+$planviewer = new Planviewer\Planviewer();
 
-$layers = $mapsapi->listLayers($identifier);
+/** In this example we create a viewer to be able to list the layers */
+
+/** mandatory */
+$data = [
+    'name' => 'my-new-viewer',
+];
+
+/** optional */
+$options = [
+    'default_show_print' => true,
+    'default_show_reset' => true,
+    'default_show_measure' => true,
+    'default_show_snap' => true,
+];
+
+$viewer = $planviewer->mapsApi->createViewer($data, $options)->viewer;
+
+/** get all layers from viewer */
+$layers = $planviewer->mapsApi->listLayers($viewer->identifier);
 var_dump($layers);
 
 

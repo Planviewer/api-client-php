@@ -15,7 +15,8 @@ namespace Planviewer;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
-use apiInterface;
+use Classes\apiInterface;
+use Classes\apiHandler;
 
 class ProductApi extends Client
 {

@@ -14,22 +14,20 @@
  * @see https://docs.planviewer.nl/mapsapi/server_calls/layers.html#create-a-new-layer-for-a-viewer
  */
 
+use Planviewer\Planviewer;
+
 require dirname(__DIR__).'/../bootstrap.php';
 
-$planviewer = new Planviewer\Planviewer();
+$planviewer = new Planviewer();
+
 
 /** available layer-types */
 $types = $planviewer->mapsApi->listLayerTypes();
 
-/** fetch available layers from WMS service */
-$layers = $planviewer->mapsApi->getWmsCapabilities('https://geodata.nationaalgeoregister.nl/ahn1/wms');
-
-
-
 /** create viewer for example */
 /** mandatory */
 $data = [
-    'name' => 'my-viewer-with-wms-layer',
+    'name' => 'my-viewer-with-percelen-layer',
 ];
 
 /** optional */
@@ -40,20 +38,17 @@ $options = [
     'default_show_snap' => true,
 ];
 
-$viewer = $planviewer->mapsApi->createViewer($data, $options)->viewer;
+/** Create viewer for this example */
+$viewer = $planviewer->mapsApi->createViewer($data, $options);
 
-$identifier = $viewer->identifier;
-
-/** mandatory for WMS layer */
+/* layer options */
+/** mandatory for percelen layer */
 $data = [
-    'name' => 'my-wms-layer',
-    'wms_url' => 'https://geodata.nationaalgeoregister.nl/ahn1/wms',
+    'name' => 'my-percelen-layer',
 
     /** must be one of $types */
-    'type' => 'wms',
+    'type' => 'dkk',
 
-    /** one of $layers from capabilities */
-    'wms_layer_name' => 'ahn1_100m',
 ];
 
 /** options */
@@ -63,7 +58,7 @@ $options = [
     'show_layer' => true,
 ];
 
-$layer = $planviewer->mapsApi->createLayer($identifier, $data, $options);
+
+$layer = $planviewer->mapsApi->createLayer($viewer->viewer->identifier,$data, $options);
+
 var_dump($layer);
-
-

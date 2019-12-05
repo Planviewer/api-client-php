@@ -14,7 +14,9 @@
  * @see https://docs.planviewer.nl/mapsapi/server_calls/viewers.html#list-viewers
  */
 
-$mapsapi = require dirname(__DIR__).'/../bootstrap.php';
+require dirname(__DIR__).'/../bootstrap.php';
+
+$planviewer = new Planviewer\Planviewer();
 
 /** paged list */
 $limit = 10;
@@ -22,7 +24,7 @@ $offset = 0;
 $viewers = [];
 do {
 
-    $batch = $mapsapi->listViewers($offset, $limit);
+    $batch = $planviewer->mapsApi->listViewers($offset, $limit);
     $viewers = array_merge($viewers, $batch->viewers);
     $offset += $limit;
 
