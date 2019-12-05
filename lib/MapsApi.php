@@ -332,12 +332,16 @@ class MapsApi extends Client
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getViewerOutline(string $identifier)
+    public function getViewerOutline(string $identifier, $format = 'json')
     {
-        $response = $this->request('GET', '/maps_api/v2/server/viewers/' . $identifier . '/outline');
+        $response = $this->request('GET', '/maps_api/v2/server/viewers/' . $identifier . '/outline.'.$format);
 
-        $batch = $this->api->json_decode($response);
-        return $batch;
+        if ('json' === $format) {
+            $batch = $this->api->json_decode($response);
+            return $batch;
+        }
+
+        return $response->getBody()->getContents();
     }
 
     /**
@@ -350,7 +354,7 @@ class MapsApi extends Client
      */
     public function setViewerOutline(string $identifier, array $options)
     {
-        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/outline', [
+        $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/set_outline', [
             'json' => $options,
         ]);
 
