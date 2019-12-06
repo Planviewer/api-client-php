@@ -61,6 +61,21 @@ $options = [
 /** set outline */
 $planviewer->mapsApi->setViewerOutline($viewerId, $options);
 
+/** Create an empty vector layer, we will be adding the geometries to this layer */
+$data = [
+    "name" => "My vector shape",
+    "type" => "vector",
+    "base" => "false",
+];
+$options = [
+    "consultable" => true,
+    "vector_uploadable" => false,
+    "vector_type" => "polygon", //always use polygon for enkelbestemmingen
+    "vector_drawable" => true,
+];
+$vectorLayer = $planviewer->mapsApi->createLayer($viewerId, $data, $options)->layer;
+
+var_dump($vectorLayer);
 /** gets the outline in correct format for the following gis calls */
 $outlinedata = $planviewer->mapsApi->getViewerOutline($viewerId, 'txt');
 /** Split between geometry and area */
@@ -82,7 +97,21 @@ $enkelbestemmingen = $planviewer->dataApi->fetch('getenkelbestemmingbygeometry',
 
 
 
-var_dump($enkelbestemmingen);
+$countedEb = count($enkelbestemmingen);
+if (0 === $countedEb) {
+    die('No Enkelbestemmingen found within the given geometry');
+}
+if (1 === $countedEb) {
+    /** just one found, no need to do all the complicated stuff, just add this to the vector layer */
+    $options = [
+        'geometry' => $enkelbestemmingen[0]->geometry,
+        'properties' => [
+            'name' =>   $enkelbestemmingen[0]->naam,
+            'groep' => $enkelbestemmingen[0]->bestemmingshoofdgroep,
+        ],
+    ];
+    $planviewer->mapsApi->setPropertyVectorLayer($viewerId, $vectorLayer->id, $options);
+}
 
 
 //for creation only remove viewer after calls

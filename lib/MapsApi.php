@@ -607,7 +607,7 @@ class MapsApi extends Client
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function setPropertyVectorLayer(string $identifier, integer $layerId, array $options)
+    public function setPropertyVectorLayer(string $identifier, $layerId, array $options)
     {
         $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId . '/set_feature', [
             'json' => $options,
