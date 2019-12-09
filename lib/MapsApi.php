@@ -51,7 +51,7 @@ class MapsApi extends Client
     /**
      * @return mixed
      */
-    public function ListLayerTypes()
+    public function listLayerTypes()
     {
         $response = $this->request('GET', '/maps_api/v2/server/layer_types');
         $batch = $this->api->json_decode($response);
@@ -61,7 +61,7 @@ class MapsApi extends Client
     /**
      * @return mixed
      */
-    public function ListVectorSourceTypes()
+    public function listVectorSourceTypes()
     {
         $response = $this->request('GET', '/maps_api/v2/server/vector_source_types');
         $batch = $this->api->json_decode($response);
@@ -71,7 +71,7 @@ class MapsApi extends Client
     /**
      * @return mixed
      */
-    public function ListFeatureExportTypes()
+    public function listFeatureExportTypes()
     {
         $response = $this->request('GET', '/maps_api/v2/server/feature_export_types');
         $batch = $this->api->json_decode($response);
@@ -81,7 +81,7 @@ class MapsApi extends Client
     /**
      * @return mixed
      */
-    public function ListImageExportTypes()
+    public function listImageExportTypes()
     {
         $response = $this->request('GET', '/maps_api/v2/server/image_export_types');
         $batch = $this->api->json_decode($response);
@@ -91,7 +91,7 @@ class MapsApi extends Client
     /**
      * @return mixed
      */
-    public function ListFieldMappingTypes()
+    public function listFieldMappingTypes()
     {
         $response = $this->request('GET', '/maps_api/v2/server/mapping_types');
         $batch = $this->api->json_decode($response);
