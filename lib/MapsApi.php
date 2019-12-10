@@ -15,8 +15,8 @@ namespace Planviewer;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
-use Classes\apiInterface;
-use Classes\apiHandler;
+use Planviewer\Tools\ApiInterface;
+use Planviewer\Tools\ApiHandler;
 
 class MapsApi extends Client
 {
@@ -29,7 +29,7 @@ class MapsApi extends Client
      * @param array $config
      * @param object $apiHandler
      */
-    public function __construct(array $config = [], apiInterface $apiHandler = null)
+    public function __construct(array $config = [], ApiInterface $apiHandler = null)
     {
 
         if (!isset($config['base_uri'])) {
@@ -39,7 +39,7 @@ class MapsApi extends Client
         parent::__construct($config);
 
         if(null === $apiHandler) {
-            $apiHandler = new apiHandler();
+            $apiHandler = new ApiHandler();
         }
 
         $this->api = $apiHandler;

@@ -11,11 +11,11 @@ declare(strict_types=1);
  * @see https://github.com/Planviewer/api-client-php
  */
 
-namespace Classes;
+namespace Planviewer\Tools;
 
 use GuzzleHttp\Psr7\Response;
 
-class apiHandler implements apiInterface
+class ApiHandler implements ApiInterface
 {
     /**
      * @param Response $response

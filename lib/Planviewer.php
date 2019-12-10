@@ -13,9 +13,7 @@ declare(strict_types=1);
 
 namespace Planviewer;
 
-use Classes\apiInterface;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Response;
+use Planviewer\Tools\ApiInterface;
 
 class Planviewer
 {
@@ -27,7 +25,7 @@ class Planviewer
 
     public $productApi;
 
-    public function __construct(apiInterface $apiHandler = null)
+    public function __construct(ApiInterface $apiHandler = null)
     {
         $config = require __DIR__ . '../../config/config.php';
         $this->config = [

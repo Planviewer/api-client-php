@@ -11,11 +11,11 @@ declare(strict_types=1);
  * @see https://github.com/Planviewer/api-client-php
  */
 
-namespace Classes;
+namespace Planviewer\Tools;
 
 use GuzzleHttp\Psr7\Response;
 
-interface apiInterface
+interface ApiInterface
 {
     public function json_decode(Response $response, $assoc = false, $depth = 512, $options = 0);
 

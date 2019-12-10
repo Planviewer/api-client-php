@@ -15,7 +15,7 @@
     "autoload": {
         "psr-4": {
             "Planviewer\\": "lib/",
-            "Classes\\": "lib/Classes/"
+            "Planviewer\\Tools\\": "lib/Tools/"
         }
     }
 }
