@@ -1,12 +1,20 @@
 
-# Planviewer API Client
+<h1 align="center"> Planviewer API Client</h1>
 
 
-# Install Composer
-curl -sS https://getcomposer.org/installer | php
+# Composer Installation
 
-# Install dependencies
-composer.phar install
+By far the easiest way to install the Mollie API client is to require it with [Composer](https://getcomposer.org/doc/00-intro.md).
+
+```php
+$ composer planviewer/api-client-php:^1.0.0
+
+{
+    "require": {
+        "planviewer/api-client-php": "^1.0.0"
+    }
+}
+```
 
 #Basic Authentication
 You'll need a Client & Secret in order to use Planviewer API's
