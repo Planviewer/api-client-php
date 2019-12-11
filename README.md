@@ -4,7 +4,7 @@
 
 # Composer Installation
 
-By far the easiest way to install the Mollie API client is to require it with [Composer](https://getcomposer.org/doc/00-intro.md).
+By far the easiest way to install the  api-client is to require it with [Composer](https://getcomposer.org/doc/00-intro.md).
 
 ```php
 $ composer planviewer/api-client-php:^1.0.0
