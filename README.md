@@ -17,8 +17,8 @@ $ composer require "planviewer/api-client-php:^1.0.0"
 ```
 
 # Manual Installation
-If you're not familiar with using composer we've added a ZIP file to the releases containing the API client and all the 
-packages normally installed by composer. Download the api-client-php from the [releases page](https://github.com/Planviewer/api-client-php/releases/).
+If you're not familiar with using composer we've added a ZIP file to the releases containing the API client.
+Download the api-client-php from the [releases page](https://github.com/Planviewer/api-client-php/releases/).
 
 
 # Basic Authentication
@@ -42,7 +42,7 @@ Add the use to your class or script.
 create an instance of the Planviewer object.
 
 ```php
-use Planviewer/Planviewer
+use Planviewer/Planviewer;
 
 $planviewer = new Planviewer();
 ```
