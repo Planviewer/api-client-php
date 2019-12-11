@@ -16,12 +16,12 @@ $ composer planviewer/api-client-php:^1.0.0
 }
 ```
 
-#Manual Installation
+# Manual Installation
 If you're not familiar with using composer we've added a ZIP file to the releases containing the API client and all the 
 packages normally installed by composer. Download the api-client-php from the [releases page](https://github.com/Planviewer/api-client-php/releases/).
 
 
-#Basic Authentication
+# Basic Authentication
 You'll need a Client & Secret in order to use Planviewer API's
 Log into https://www.planviewer.nl and go to your applications: https://www.planviewer.nl/my_api/applications/
 
