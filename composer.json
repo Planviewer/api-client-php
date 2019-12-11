@@ -3,6 +3,7 @@
     "description": "API Client library to access Planviewer API's",
     "type": "library",
     "license": "AGPL-3.0-only",
+    "version": "1.0.2-dev",
     "authors": [
         {
             "name": "Axel Simons",
