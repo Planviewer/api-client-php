@@ -267,10 +267,10 @@ class MapsApi extends Client
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function updateViewer(string $identifier, array $updateOptions)
+    public function updateViewer(string $identifier, array $options)
     {
         $response = $this->request('POST', '/maps_api/v2/server/viewers/' . $identifier, [
-            'json' => $updateOptions,
+            'json' => $options,
         ]);
 
         $batch = $this->api->json_decode($response);
@@ -321,7 +321,7 @@ class MapsApi extends Client
             'query' => $options,
         ]);
 
-        $batch = $this->api->json_decode($response);
+        $batch = $this->api->image($response);
         return $batch;
     }
 

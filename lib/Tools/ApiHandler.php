@@ -39,6 +39,10 @@ class ApiHandler implements ApiInterface
         return $data;
     }
 
+    public function image(Response $response) {
+     return $response->getBody()->getContents();
+    }
+
 
     /**
      * @param $viewerId
