@@ -16,7 +16,7 @@
 
 use Planviewer\Planviewer;
 
-require dirname(__DIR__).'/../bootstrap.php';
+require dirname(__DIR__) . '/../bootstrap.php';
 
 /** $config is build up in bootstrap.php. take a look at the file to see how it's configured  */
 $planviewer = new Planviewer($config);
@@ -50,4 +50,7 @@ var_dump("Available Field Mapping Types");
 $list = $planviewer->mapsApi->listFieldMappingTypes();
 var_dump($list);
 
+var_dump("Return a list of icons for our static layers");
+$list = $planviewer->mapsApi->getDefaultLegenda();
+var_dump($list);
 
