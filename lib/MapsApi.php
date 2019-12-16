@@ -170,12 +170,10 @@ class MapsApi extends Client
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getWmsCapabilities(string $url)
+    public function getWmsCapabilities(array $options)
     {
         $response = $this->request('POST', '/maps_api/v2/server/capabilities/wms', [
-            'json' => [
-                'url' => $url,
-            ]
+            'json' => $options,
         ]);
         $layers = $this->api->json_decode($response);
         return $layers;
