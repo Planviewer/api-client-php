@@ -18,7 +18,8 @@ require dirname(__DIR__).'/../bootstrap.php';
 
 use Planviewer\Planviewer;
 
-$planviewer = new Planviewer();
+/** $config is build up in bootstrap.php. take a look at the file to see how it's configured  */
+$planviewer = new Planviewer\Planviewer($config);
 
 
 

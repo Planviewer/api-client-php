@@ -15,3 +15,9 @@ foreach ($paths as $path) {
         break;
     }
 }
+
+    $configFile = require __DIR__ . '../../config/config.php';
+    $config = [
+        'auth' => [$configFile['api-key'], $configFile['api-secret']],
+    ];
+

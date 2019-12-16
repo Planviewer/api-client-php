@@ -25,14 +25,17 @@ class Planviewer
 
     public $productApi;
 
-    public function __construct(ApiInterface $apiHandler = null)
+    public function __construct(array $config, ApiInterface $apiHandler = null)
     {
-        $config = require __DIR__ . '../../config/config.php';
-        $this->config = [
-            'auth' => [$config['api-key'], $config['api-secret']],
-            'base_uri' => (isset($config['base_uri']) ? $config['base_uri'] : 'https://www.planviewer.nl'),
-            'verify' => false,
-        ];
+        $this->config = $config;
+
+        if(isset($config['api-key']) && isset($config['api-secret'])) {
+            $this->config = [
+                'auth' => [$config['api-key'], $config['api-secret']],
+            ];
+        }
+
+        $this->config = array_merge( ['base_uri' => (isset($config['base_uri']) ? $config['base_uri'] : 'https://www.planviewer.nl'),], $config);
         $this->mapsApi = new MapsApi($this->config, $apiHandler);
         $this->dataApi = new DataApi($this->config, $apiHandler);
         $this->productApi = new ProductApi($this->config, $apiHandler);

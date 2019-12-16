@@ -16,7 +16,10 @@
 
 require dirname(__DIR__).'/../bootstrap.php';
 
-$planviewer = new Planviewer\Planviewer();
+/** $config is build up in bootstrap.php. take a look at the file to see how it's configured  */
+$planviewer = new Planviewer\Planviewer($config);
+
+var_dump($config);
 
 /** In this example we create a viewer to be able to list the layers */
 
