@@ -27,7 +27,7 @@ Log into https://www.planviewer.nl and go to your applications: https://www.plan
 
 Generate a random Client & Secret.
 
-Add the Client & Secret to /config/config.php
+Add the Client & Secret to /config/config.php or to your configuration file.
 
 ```php
 return [
@@ -41,10 +41,11 @@ return [
 Add the use to your class or script.
 create an instance of the Planviewer object.
 
+
 ```php
 use Planviewer/Planviewer;
 
-$planviewer = new Planviewer();
+$planviewer = new Planviewer($config);
 ```
 The Planviewer object contains all our API's. You can access the calls as follows:
 ```php

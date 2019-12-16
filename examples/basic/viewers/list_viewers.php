@@ -14,10 +14,12 @@
  * @see https://docs.planviewer.nl/mapsapi/server_calls/viewers.html#list-viewers
  */
 
+use Planviewer\Planviewer;
+
 require dirname(__DIR__).'/../bootstrap.php';
 
 /** $config is build up in bootstrap.php. take a look at the file to see how it's configured  */
-$planviewer = new Planviewer\Planviewer($config);
+$planviewer = new Planviewer($config);
 
 /** paged list */
 $limit = 10;

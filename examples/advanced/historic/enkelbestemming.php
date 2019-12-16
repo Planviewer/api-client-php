@@ -14,12 +14,12 @@
  * @see https://docs.planviewer.nl/mapsapi/server_calls/layers.html#create-a-new-layer-for-a-viewer
  */
 
-use Planviewer;
+use Planviewer\Planviewer;
 
-require dirname(__DIR__) . '/../bootstrap.php';
+require dirname(__DIR__).'/../bootstrap.php';
 
 /** $config is build up in bootstrap.php. take a look at the file to see how it's configured  */
-$planviewer = new Planviewer\Planviewer($config);
+$planviewer = new Planviewer($config);
 
 /** As this a uniquely Dutch thing the following explaination will be in Dutch  */
 
