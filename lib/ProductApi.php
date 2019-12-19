@@ -129,7 +129,7 @@ class ProductApi extends Client
     public function getOrder(string $uuid)
     {
         $response = $this->request('GET', '/product_api/v1/jobs/retrieve/'.$uuid);
-        $batch = $this->api->image($response);
+        $batch = $this->api->file($response);
 
         return $batch;
     }

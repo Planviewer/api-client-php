@@ -39,7 +39,7 @@ class ApiHandler implements ApiInterface
         return $data;
     }
 
-    public function image(Response $response) {
+    public function file(Response $response) {
      return $response->getBody()->getContents();
     }
 

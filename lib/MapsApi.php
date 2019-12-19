@@ -321,7 +321,7 @@ class MapsApi extends Client
             'query' => $options,
         ]);
 
-        $batch = $this->api->image($response);
+        $batch = $this->api->file($response);
         return $batch;
     }
 
@@ -449,7 +449,7 @@ class MapsApi extends Client
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function replaceShapefile(string $identifier, int $layer, array $data, array $options = [])
+    public function replaceShapefile(string $identifier, int $layer, array $data)
     {
         $response = $this->request('POST', '/maps_api/v2/server/viewers/'.$identifier.'/layers/'.$layer.'/upload', [
             'json' => $data,
