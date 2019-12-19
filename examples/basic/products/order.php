@@ -25,7 +25,6 @@ $planviewer = new Planviewer($config);
 /** get product list */
 $products = $planviewer->productApi->getProducts();
 
-var_dump($products);
 
 /** We'll take the percelenrapport as the product we want */
 $product = $products[1]->slug;
@@ -79,5 +78,48 @@ $options = [
 
 $availableProducts = $planviewer->productApi->getAvailableProducts($options);
 
-var_dump($availableProducts);
+if (0 === sizeof($availableProducts)) {
+    die("No products found");
+}
+
+/** Let's order the first product */
+$options = [
+    "uuids" => [
+        $availableProducts[0]->intentions[0]->uuid
+        ],
+    ];
+
+
+
+$order = $planviewer->productApi->placeOrder($options);
+
+
+/** as we only order one product we can start poling if it has been generated */
+$ready = false;
+
+/** depending on the product the generation can take a few minutes */
+while(!$ready) {
+    $options = [
+      "uuids" =>[$order[0]->job->uuid]
+    ];
+    $status = $planviewer->productApi->getOrderStatus($options);
+    /** If finished, stop the loop and lets download the product */
+    if ('finished' === $status[0]->status) {
+        $ready = true;
+        $orderUuid = $status[0]->uuid;
+    }
+    /** If generation failes kill the script */
+    if ('error' === $status[0]->status) {
+        die("Product failed to generate");
+    }
+    //retry in 1 second
+    usleep(1000);
+}
+
+/** download the product */
+$product = $planviewer->productApi->getOrder($orderUuid);
+header("Content-type: application/pdf");
+echo $product;
+
+
 

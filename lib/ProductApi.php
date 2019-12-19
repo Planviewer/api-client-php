@@ -113,8 +113,8 @@ class ProductApi extends Client
      */
     public function getOrderStatus(array $options)
     {
-        $response = $this->request('POST', '/product_api/v1/jobs/status', [
-            'json' => $options,
+        $response = $this->request('GET', '/product_api/v1/jobs/status', [
+            'query' => $options,
         ]);
         $batch = $this->api->json_decode($response);
 
@@ -126,12 +126,10 @@ class ProductApi extends Client
      * @return mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getOrder(array $options)
+    public function getOrder(string $uuid)
     {
-        $response = $this->request('GET', '/product_api/v1/jobs/status', [
-            'query' => $options,
-        ]);
-        $batch = $this->api->json_decode($response);
+        $response = $this->request('GET', '/product_api/v1/jobs/retrieve/'.$uuid);
+        $batch = $this->api->image($response);
 
         return $batch;
     }
