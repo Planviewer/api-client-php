@@ -99,7 +99,7 @@ class MapsApi extends Client
     }
 
     /**
-     * @param array array $options
+     * @param array $options
      *
      * @return mixed
      *
@@ -148,7 +148,7 @@ class MapsApi extends Client
     }
 
     /**
-     * @param array array $options
+     * @param array $options
      *
      * @return mixed
      *
@@ -180,7 +180,7 @@ class MapsApi extends Client
     }
 
     /**
-     * @param array array $options
+     * @param array $options
      *
      * @return mixed
      *
@@ -261,7 +261,7 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param array $updateOptions
+     * @param array  $updateOptions
      *
      * @return mixed
      *
@@ -309,7 +309,7 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param array  array $options
+     * @param array  $options
      *
      * @return mixed
      *
@@ -344,7 +344,7 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param array $options
+     * @param array  $options
      *
      * @return mixed
      *
@@ -365,7 +365,7 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
+     * @param int    $layerId
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
@@ -379,7 +379,7 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param array $options
+     * @param array  $options
      *
      * @return mixed
      *
@@ -461,7 +461,7 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
+     * @param int    $layerId
      *
      * @return mixed
      *
@@ -477,8 +477,8 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
-     * @param array  array $options
+     * @param int    $layerId
+     * @param array  $options
      *
      * @return mixed
      *
@@ -496,7 +496,7 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
+     * @param int    $layerId
      *
      * @return mixed
      *
@@ -512,8 +512,8 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
-     * @param array  array $options
+     * @param int    $layerId
+     * @param array  $options
      *
      * @return mixed
      *
@@ -531,8 +531,8 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
-     * @param array  array $options
+     * @param int    $layerId
+     * @param array  $options
      *
      * @return mixed
      *
@@ -550,7 +550,7 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
+     * @param int    $layerId
      *
      * @return mixed
      *
@@ -566,7 +566,7 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
+     * @param int    $layerId
      *
      * @return mixed
      *
@@ -582,7 +582,7 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
+     * @param int    $layerId
      *
      * @return mixed
      *
@@ -598,8 +598,8 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
-     * @param array array $options
+     * @param int    $layerId
+     * @param array  $options
      *
      * @return mixed
      *
@@ -617,7 +617,7 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
+     * @param int    $layerId
      *
      * @return mixed
      *
@@ -633,8 +633,8 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
-     * @param int $featureId
+     * @param int    $layerId
+     * @param int    $featureId
      *
      * @return mixed
      *
@@ -650,8 +650,8 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
-     * @param array  array $options
+     * @param int    $layerId
+     * @param array  $options
      *
      * @return mixed
      *
@@ -671,7 +671,7 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
+     * @param int    $layerId
      *
      * @return mixed
      *
@@ -691,8 +691,8 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
-     * @param array  array $options
+     * @param int    $layerId
+     * @param array  $options
      *
      * @return mixed
      *
@@ -710,8 +710,8 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
-     * @param array  array $options
+     * @param int    $layerId
+     * @param array  $options
      *
      * @return mixed
      *
@@ -729,8 +729,8 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
-     * @param int $mappingId
+     * @param int    $layerId
+     * @param int    $mappingId
      *
      * @return mixed
      *
@@ -746,9 +746,9 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
-     * @param int $mappingId
-     * @param array  array $options
+     * @param int    $layerId
+     * @param int    $mappingId
+     * @param array  $options
      *
      * @return mixed
      *
@@ -766,8 +766,8 @@ class MapsApi extends Client
 
     /**
      * @param string $identifier
-     * @param int $layerId
-     * @param int $mappingId
+     * @param int    $layerId
+     * @param int    $mappingId
      *
      * @return mixed
      *
@@ -781,10 +781,55 @@ class MapsApi extends Client
         return $batch;
     }
 
+    /**
+     * @param string  $identifier
+     * @param integer $layerId
+     * @param array  $options
+     * 
+     * @return mixed
+     * 
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function setFilter(string $identifier, integer $layerId, array $options)
+    {
+        $response = $this->request('BATCH', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId, [
+            'json' => $options
+        ]);
+
+        $batch = $this->api->json_decode($response);
+        return $batch;
+    }
+
+    /**
+     * @param string  $identifier
+     * @param integer $layerId
+     * @param array  $options
+     * 
+     * @return mixed
+     * 
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function setTranslation(string $identifier, integer $layerId, array $options)
+    {
+        $response = $this->request('BATCH', '/maps_api/v2/server/viewers/' . $identifier . '/layers/' . $layerId, [
+            'json' => $options
+        ]);
+
+        $batch = $this->api->json_decode($response);
+        return $batch;
+    }
+
 
     /* GEOMETRY */
     /* https://docs.planviewer-staging.nl/mapsapi/geometry.html# */
 
+    /**
+     * @param array $options
+     * 
+     * @return mixed
+     * 
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function getArea(array $options)
     {
         $response = $this->request('POST', '/maps_api/v2/server/gis/area', [
@@ -795,6 +840,13 @@ class MapsApi extends Client
         return $batch;
     }
 
+    /**
+     * @param array $options
+     * 
+     * @return mixed
+     * 
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function doBuffer(array $options)
     {
         $response = $this->request('POST', '/maps_api/v2/server/gis/buffer', [
@@ -805,6 +857,13 @@ class MapsApi extends Client
         return $batch;
     }
 
+    /**
+     * @param array $options
+     * 
+     * @return mixed
+     * 
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function doIntersection(array $options)
     {
         $response = $this->request('POST', '/maps_api/v2/server/gis/intersection', [
