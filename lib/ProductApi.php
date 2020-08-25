@@ -122,6 +122,37 @@ class ProductApi extends Client
     }
 
     /**
+     * @param string $uuid
+     * @return string
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getAvailableDocumentsFromOrder(string $uuid)
+    {
+        /** function only available as a follow-up for kadaster products */
+
+        $response = $this->request('GET', '/product_api/v1/documents/list/'.$uuid);
+        $batch = $this->api->file($response);
+
+        return $batch;
+    }
+
+
+    /**
+     * @param array $options
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getKadasterBronDocuments($options)
+    {
+        $response = $this->request('POST', '/product_api/v1/documents/order', [
+            'json' => $options,
+        ]);
+        $batch = $this->api->json_decode($response);
+
+        return $batch;
+    }
+
+    /**
      * @param array $options
      * @return mixed
      * @throws \GuzzleHttp\Exception\GuzzleException
